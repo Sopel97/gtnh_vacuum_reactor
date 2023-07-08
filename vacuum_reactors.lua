@@ -560,7 +560,7 @@ local function identify_controlled_reactors(reactor_chambers, reactor_transposer
         print("Searching for a Reactor Chamber matching Redstone IO [" .. redstone_io.address .. "].")
         redstone_io.setOutput({ 15, 15, 15, 15, 15, 15 })
 
-        os.sleep(1.05) -- wait for the reactor to turn on
+        os.sleep(1.2) -- wait for the reactor to turn on
 
         local found = false
         for _, reactor_chamber in ipairs(reactor_chambers) do
@@ -595,7 +595,7 @@ local function identify_controlled_reactors(reactor_chambers, reactor_transposer
 
         reactor_transposer.proxy.transferItem(reactor_transposer.sides.general_provider, reactor_transposer.sides.reactor_chamber, 1, reactor_plating_slot, 1)
 
-        os.sleep(1.05) -- wait for the reactor to update
+        os.sleep(1.2) -- wait for the reactor to update
 
         local found = false
         for _, reactor in ipairs(reactors) do
