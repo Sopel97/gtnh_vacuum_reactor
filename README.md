@@ -10,7 +10,7 @@ Just copy the file `vacuum_reactors.lua` anywhere on the drive (make sure it's o
 
 ### Config setup
 
-You must specify the reactor configuration in the code. There is one shared configuration for all reactors. It is controlled by a 2d array `REACTOR_PATTERN`. `C` stands for coolant, `R` stands for fuel rod, `U` stands for "unknown". "unknown" can be used for components other than coolant/rods that should not be touched by the program ever. You WILL NOT be using pure rod+coolant reactors due to some limitations (don't blame me, blame ic2) which will be described later in this document. You should always add some components to cool the reactor hull a little bit.
+You must specify the reactor configuration in the code - the program automatically fills and maintains the reactor chamber. There is one shared configuration for all reactors. It is controlled by a 2d array `REACTOR_PATTERN`. `C` stands for coolant, `R` stands for fuel rod, `U` stands for "unknown". The "unknown" designation can be used for components other than coolant/rods that should not be touched by the program ever. You WILL NOT be using pure rod+coolant reactors due to some limitations (don't blame me, blame ic2) which will be described later in this document. You should always add some components to cool the reactor hull a little bit.
 
 Default config:
 
@@ -41,6 +41,8 @@ Example reactor setup:
 
 ![](img/reactor_setup.png)
 
+The only time you should touch the reactor chamber is to place the components that the script won't touch (reactor platings, heat vents). The fuel rods should be provided by the ME Interface, and coolant cells by one of the minecraft chests. The program automatically fills the reactor before turning it on based on the configuration specified in the code.
+
 ### UI
 
 Clicking on a line corresponding to a reactor will toggle it (if disabled like this it will never be turned on by the program).
@@ -60,11 +62,11 @@ Reactors are identified by the transposer they are connected to, as this is how 
 While the program can be ran using a computer it is highly advised to use a server for more components for future expansion. It requires ~10 components to run a single reactor, and 3 additional components for each subsequent one. Do not forget to reboot the server after modifying the attached components.
 
 Recommended hardware specification:
-- Tier 2 GPU
 - Tier 3 CPU
 - 4x Tier 2 RAM
 - Tier 1 HDD
-- Tier 2 screen or higher (currently the resolution is forced to 80x25)
+- Tier 2 GPU
+- Tier 2 screen (currently the resolution is forced to 80x25)
 
 Optional hardware:
 - Component busses for expansion
@@ -162,3 +164,20 @@ If a reactor has incorrect inventory configuration it will be disabled.
 If full coolant/rod is missing, or there is no space to put depleted coolant/rod, the reactor will be disabled and will have to be manually restarted (see "UI" section).
 
 If the computer running this program has less than 50% of the energy buffer full the program will shut down gracefully, while ensuring all reactors are disabled.
+
+## Future directions
+
+### MOX
+
+It would be nice to support MOX vacuum reactors, however due to issues outlined in the section about limitations it's unclear how to handle them. For sure the initialization would ramp up the heat using a specific chamber setup starting from 0 heat. For the maintanence there are two options:
+
+1. Completely shut the reactor down when exchanging a coolant cell. From my experiments even this can be wonky though, and due to how redstone control works the delays would need to be quite long (multiple ticks before and after exchange). Though this might be fine with large coolants.
+2. When exchanging coolant first remove all neighbouring fuel cells. This would be fool-proof, if timing allows. Would also result in minimal power losses.
+
+### Detailed overview
+
+A detailed overview for each reactor (on click), possibly with statistics and simulations.
+
+### Other forms of external control
+
+Currently LSC is a mandatory part, but in the future setups without it should be allowed. In such case the master switch should be some kinda of redstone input instead of the LSC power readings. Currently compatibility with NIDAS is unclear.
