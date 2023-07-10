@@ -836,6 +836,9 @@ local function draw_window(title, min_x, min_y, max_x, max_y, frame_charset)
 end
 
 local function format_seconds(seconds_total)
+    if seconds_total == nil then
+        return "nil"
+    end
     seconds_total = math.floor(seconds_total)
     local hours = math.floor(seconds_total / 3600)
     local minutes = math.floor((seconds_total - hours * 3600) / 60)
