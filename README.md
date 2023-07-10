@@ -49,11 +49,15 @@ Example ME interface setup:
 
 Provides new fuel, single reactor plating; takes away depleted fuel.
 
-Example reactor setup:
+Example reactor chamber setup:
 
 ![](img/reactor_setup.png)
 
 The only time you should touch the reactor chamber is to place the components that the script won't touch (reactor platings, heat vents). The fuel rods should be provided by the ME Interface, and coolant cells by one of the minecraft chests. The program automatically fills the reactor before turning it on based on the configuration specified in the code.
+
+Example double reactor setup with vacuum freezers:
+
+![](img/2_reactor_setup.png)
 
 ### UI
 
