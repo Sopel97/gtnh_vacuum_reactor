@@ -83,7 +83,7 @@ While the program can be ran using a computer it is highly advised to use a serv
 
 Recommended hardware specification:
 - Tier 3 CPU
-- 4x Tier 2 RAM
+- 2x Tier 2 RAM
 - Tier 1 HDD
 - Tier 2 GPU
 - Tier 2 screen (currently the resolution is forced to 80x25)
