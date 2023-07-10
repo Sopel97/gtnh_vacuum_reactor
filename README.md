@@ -193,3 +193,7 @@ A detailed overview for each reactor (on click), possibly with statistics and si
 ### Other forms of external control
 
 Currently LSC is a mandatory part, but in the future setups without it should be allowed. In such case the master switch should be some kinda of redstone input instead of the LSC power readings. Currently compatibility with NIDAS is unclear.
+
+### Real-time logs
+
+Currently logs use in-game time. Ideally they should use real-time.
