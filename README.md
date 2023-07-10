@@ -59,6 +59,10 @@ Example double reactor setup with vacuum freezers:
 
 ![](img/2_reactor_setup.png)
 
+[gtnh-flow](https://github.com/OrderedSet86/gtnh-flow) diagram for a single reactor with the default chamber setup:
+
+[![](img/default_flow.png)](diagrams/1x40600eut.yaml)
+
 ### UI
 
 Clicking on a line corresponding to a reactor will toggle it (if disabled like this it will never be turned on by the program).
