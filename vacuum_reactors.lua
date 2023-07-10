@@ -436,6 +436,9 @@ local function get_transposer_sides(transposer_proxy)
             local size = transposer_proxy.getInventorySize(side)
             if name == "blockReactorChamber" then
                 print("Found reactor chamber inventory with " .. tostring(size) .. " slots.")
+                if size ~= REACTOR_SIZE then
+                    error("Reactor chamber size mismatches configuration.")
+                end
                 transposer_sides.reactor_chamber = side
             elseif name == "tile.IronChest" then
                 print("Found temporary storage inventory with " .. tostring(size) .. " slots.")
