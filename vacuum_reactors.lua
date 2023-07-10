@@ -836,9 +836,6 @@ local function draw_window(title, min_x, min_y, max_x, max_y, frame_charset)
 end
 
 local function format_seconds(seconds_total)
-    if seconds_total == nil then
-        return "nil"
-    end
     seconds_total = math.floor(seconds_total)
     local hours = math.floor(seconds_total / 3600)
     local minutes = math.floor((seconds_total - hours * 3600) / 60)
@@ -875,7 +872,7 @@ local function create_widgets(lsc, reactors)
                 empty_or_full_message = "; Full in " .. format_seconds(full_in_seconds)
             elseif average_net_input_eut < 0 then
                 local empty_in_seconds = lsc_status.used_capacity_eu / -average_net_input_eut / 20
-                empty_or_full_message = "; Empty in " .. format_seconds(full_in_seconds)
+                empty_or_full_message = "; Empty in " .. format_seconds(empty_in_seconds)
             end
 
             draw_window("LSC", widget.min_x, widget.min_y, widget.max_x, widget.max_y)
