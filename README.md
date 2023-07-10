@@ -61,9 +61,9 @@ Clicking on a line corresponding to a reactor will toggle it (if disabled like t
 
 Ctrl+C shuts down the program gracefully.
 
-UI without a valid LSC hooked up:
+UI with an LSC and 2 reactors:
 
-![](img/ui_no_lsc.png)
+![](img/ui_with_lsc.png)
 
 Reactors are identified by the transposer they are connected to, as this is how they are easiest to identify in the world. Only the first 8 charactes of the UUID are printed for clarity.
 
