@@ -12,9 +12,21 @@ Just copy the file `vacuum_reactors.lua` anywhere on the drive (make sure it's o
 
 You must specify the reactor configuration in the code - the program automatically fills and maintains the reactor chamber. There is one shared configuration for all reactors. It is controlled by a 2d array `REACTOR_PATTERN`. `C` stands for coolant, `R` stands for fuel rod, `U` stands for "unknown". The "unknown" designation can be used for components other than coolant/rods that should not be touched by the program ever. You WILL NOT be using pure rod+coolant reactors due to some limitations (don't blame me, blame ic2) which will be described later in this document. You should always add some components to cool the reactor hull a little bit.
 
-Default config:
+Default reactor chamber config:
 
 ![](img/default_reactor_config.png)
+
+Aside from that you can modify the following constants:
+
+`LSC_HYSTERESIS_MIN = 0.5` - the LSC power threshold at which energy generation will be allowed
+
+`LSC_HYSTERESIS_MAX = 0.95` - the LSC power threshold at which energy generation will be halted
+
+`COOLING_CELL_DEPLETED_THRESHOLD = 0.95` - the % of a coolant cell that has to be used in order for the program to recognize it as depleted. It should be modified for cells smaller than 360k. It is ill-advised to run with cells smaller than 360k.
+
+`MAX_REACTOR_OPERATING_HEAT_PCT = 0.5` - the reactor chamber heat threshold at which the reactor will be automatically disabled. No real reason to change it, unless you're trying out MOX stuff (which you shouldn't with the current script).
+
+Modifying other constants is ill-advised and should only be done by advanced users.
 
 ### Reactor setup
 
