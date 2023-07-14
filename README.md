@@ -183,6 +183,10 @@ If a reactor has incorrect inventory configuration it will be disabled.
 
 If full coolant/rod is missing, or there is no space to put depleted coolant/rod, the reactor will be disabled and will have to be manually restarted (see "UI" section).
 
+Example state after vacuum freezers for one reactor failed to provide coolant:
+
+![](img/vacuum_freezer_failure.png)
+
 If the computer running this program has less than 50% of the energy buffer full the program will shut down gracefully, while ensuring all reactors are disabled.
 
 ## Future directions
