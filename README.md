@@ -51,6 +51,8 @@ Provides new fuel, single reactor plating; takes away depleted fuel.
 
 Example reactor chamber setup:
 
+NOTE: the Redstone I/O has one side disabled (with a wrench) such that only one side connects to the reactor. Otherwise initialization verification will fail as there is no way to ensure that both faces that the Redstone I/O touches belong to the same reactor.
+
 ![](img/reactor_setup.png)
 
 The only time you should touch the reactor chamber is to place the components that the script won't touch (reactor platings, heat vents). The fuel rods should be provided by the ME Interface, and coolant cells by one of the minecraft chests. The program automatically fills the reactor before turning it on based on the configuration specified in the code.
