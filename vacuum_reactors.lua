@@ -767,11 +767,11 @@ local function update_lsc_readings(lsc)
     local sensor_info = lsc.controller.getSensorInformation()
     lsc.status = {
         used_capacity_eu = parse_fuzzy_int(sensor_info[2]),
-        total_capacity_eu = parse_fuzzy_int(sensor_info[3]),
-        passive_loss_eut = parse_fuzzy_int(sensor_info[4]),
-        avg_input_eut = parse_fuzzy_int(string.gsub(sensor_info[7], "(last 5 seconds)", "")),
-        avg_output_eut = parse_fuzzy_int(string.gsub(sensor_info[8], "(last 5 seconds)", "")),
-        needs_maintenance = (string.find(sensor_info[9], "Has Problems") ~= nil)
+        total_capacity_eu = parse_fuzzy_int(sensor_info[5]),
+        passive_loss_eut = parse_fuzzy_int(sensor_info[7]),
+        avg_input_eut = parse_fuzzy_int(string.gsub(sensor_info[10], "(last 5 seconds)", "")),
+        avg_output_eut = parse_fuzzy_int(string.gsub(sensor_info[11], "(last 5 seconds)", "")),
+        needs_maintenance = (string.find(sensor_info[17], "Has Problems") ~= nil)
     }
 
     if lsc.needs_powergen == nil then
