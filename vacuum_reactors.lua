@@ -890,7 +890,7 @@ local function create_widgets(lsc, reactors)
             gpu.setForeground(0xFFFFFF)
             gpu.set(widget.min_x + 2, widget.min_y + 6, "LSC needs powergen: ")
                 if lsc.needs_powergen then
-                    gpu.setForeground(0xFF0000)
+                    gpu.setForeground(0x0000FF)
                 else
                     gpu.setForeground(0x00FF00)
                 end
