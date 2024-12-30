@@ -880,9 +880,9 @@ local function create_widgets(lsc, reactors)
             gpu.set(widget.min_x + 2, widget.min_y + 2, "LSC: " .. tostring(lsc_status.used_capacity_eu) .. "EU / " .. tostring(lsc_status.total_capacity_eu) .. "EU   (" .. tostring(lsc_fill_pct) .. "%)")
             gpu.set(widget.min_x + 2, widget.min_y + 3, "Passive loss: " .. tostring(lsc_status.passive_loss_eut) .. "EU/t")
             gpu.set(widget.min_x + 2, widget.min_y + 4, "I/O [EU/t]: +" .. tostring(lsc_status.avg_input_eut) .. " -" .. tostring(lsc_status.avg_output_eut) .. " -" .. tostring(lsc_status.passive_loss_eut) .. " = " .. tostring(average_net_input_eut) .. "EU/t" .. empty_or_full_message)
-	        gpu.set(widget.min_x + 2, widget.min_y + 5, "LSC needs maintenance: ")
-		        if lsc_status.needs_maintenance then
-  	                gpu.setForeground(0xFF0000)
+            gpu.set(widget.min_x + 2, widget.min_y + 5, "LSC needs maintenance: ")
+                if lsc_status.needs_maintenance then
+                   gpu.setForeground(0xFF0000)
                 else
                     gpu.setForeground(0x00FF00)
                 end
