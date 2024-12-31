@@ -880,7 +880,7 @@ local function create_widgets(lsc, reactors)
             gpu.set(widget.min_x + 2, widget.min_y + 2, "LSC: " .. tostring(lsc_status.used_capacity_eu) .. "EU / " .. tostring(lsc_status.total_capacity_eu) .. "EU   (" .. tostring(lsc_fill_pct) .. "%)")
             gpu.set(widget.min_x + 2, widget.min_y + 3, "Passive loss: " .. tostring(lsc_status.passive_loss_eut) .. "EU/t")
             gpu.set(widget.min_x + 2, widget.min_y + 4, "I/O [EU/t]: +" .. tostring(lsc_status.avg_input_eut) .. " -" .. tostring(lsc_status.avg_output_eut) .. " -" .. tostring(lsc_status.passive_loss_eut) .. " = " .. tostring(average_net_input_eut) .. "EU/t" .. empty_or_full_message)
-            gpu.set(widget.min_x + 2, widget.min_y + 5, "LSC needs maintenance: ")
+            gpu.set(widget.min_x + 2, widget.min_y + 5, "LSC needs maintenance:")
                 if lsc_status.needs_maintenance then
                    gpu.setForeground(0xFF0000)
                 else
@@ -888,7 +888,7 @@ local function create_widgets(lsc, reactors)
                 end
             gpu.set(widget.min_x + 25, widget.min_y + 5, tostring(lsc_status.needs_maintenance))
             gpu.setForeground(0xFFFFFF)
-            gpu.set(widget.min_x + 2, widget.min_y + 6, "LSC needs powergen: ")
+            gpu.set(widget.min_x + 2, widget.min_y + 6, "LSC needs powergen:")
                 if lsc.needs_powergen then
                     gpu.setForeground(0x0000FF)
                 else
