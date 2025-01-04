@@ -33,18 +33,18 @@ local REACTOR_COMPONENT_CLASSIFICATION = {
     ["IC2:reactorUraniumSimpledepleted"] = REACTOR_COMPONENT_FUEL_ROD,
     ["IC2:reactorUraniumDualdepleted"] = REACTOR_COMPONENT_FUEL_ROD,
     ["IC2:reactorUraniumQuaddepleted"] = REACTOR_COMPONENT_FUEL_ROD,
-    ["gregtech:gt.Thoriumcelldep"] = REACTOR_COMPONENT_FUEL_ROD,
-    ["gregtech:gt.Double_Thoriumcelldep"] = REACTOR_COMPONENT_FUEL_ROD,
-    ["gregtech:gt.Quad_Thoriumcelldep"] = REACTOR_COMPONENT_FUEL_ROD,
+    ["gregtech:gt.ThoriumcellDep"] = REACTOR_COMPONENT_FUEL_ROD,
+    ["gregtech:gt.Double_ThoriumcellDep"] = REACTOR_COMPONENT_FUEL_ROD,
+    ["gregtech:gt.Quad_ThoriumcellDep"] = REACTOR_COMPONENT_FUEL_ROD,
 }
 
 local REACTOR_FUEL_ROD_DEPLETED = {
     ["IC2:reactorUraniumSimpledepleted"] = true,
     ["IC2:reactorUraniumDualdepleted"] = true,
     ["IC2:reactorUraniumQuaddepleted"] = true,
-    ["gregtech:gt.Thoriumcelldep"] = true,
-    ["gregtech:gt.Double_Thoriumcelldep"] = true,
-    ["gregtech:gt.Quad_Thoriumcelldep"] = true,
+    ["gregtech:gt.ThoriumcellDep"] = true,
+    ["gregtech:gt.Double_ThoriumcellDep"] = true,
+    ["gregtech:gt.Quad_ThoriumcellDep"] = true,
     -- idk make a PR with the rest or smth I don't care myself
 }
 
