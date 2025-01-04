@@ -923,7 +923,7 @@ local function create_widgets(lsc, reactors)
             local yy = widget.min_y + 2
             local reactors = widget.reactors
             for _, reactor in ipairs(reactors) do
-                local eut = reactor.output_eut
+                local eut = math.floor(reactor.output_eut)
                 local heat_pct = math.floor(reactor.current_heat / reactor.max_heat * 100)
                 local enabled = reactor.enabled and "☑" or "☐"
                 local status = reactor.status
