@@ -875,11 +875,18 @@ local function create_widgets(lsc, reactors)
                 empty_or_full_message = "; Empty in " .. format_seconds(empty_in_seconds)
             end
 
+            local function format_number(n)
+                local formatted = tostring(n)
+                local left, num, right = formatted:match('^([^%d]*%d)(%d*)(%.?.*)$')
+                num = num:reverse():gsub("(%d%d%d)", "%1,"):reverse()
+                return left .. num .. right
+            end
+            
             draw_window("LSC", widget.min_x, widget.min_y, widget.max_x, widget.max_y)
-            gpu.set(widget.min_x + 2, widget.min_y + 1, "Tick: " .. tostring(tick) .. "; Uptime: " .. string.format("%.02f", uptime) .. "s")
-            gpu.set(widget.min_x + 2, widget.min_y + 2, "LSC: " .. tostring(lsc_status.used_capacity_eu) .. "EU / " .. tostring(lsc_status.total_capacity_eu) .. "EU   (" .. tostring(lsc_fill_pct) .. "%)")
-            gpu.set(widget.min_x + 2, widget.min_y + 3, "Passive loss: " .. tostring(lsc_status.passive_loss_eut) .. "EU/t")
-            gpu.set(widget.min_x + 2, widget.min_y + 4, "I/O [EU/t]: +" .. tostring(lsc_status.avg_input_eut) .. " -" .. tostring(lsc_status.avg_output_eut) .. " -" .. tostring(lsc_status.passive_loss_eut) .. " = " .. tostring(average_net_input_eut) .. "EU/t" .. empty_or_full_message)
+            gpu.set(widget.min_x + 2, widget.min_y + 1, "Tick: " .. format_number(tick) .. "; Uptime: " .. string.format("%.02f", uptime) .. "s")
+            gpu.set(widget.min_x + 2, widget.min_y + 2, "LSC: " .. format_number(lsc_status.used_capacity_eu) .. "EU / " .. format_number(lsc_status.total_capacity_eu) .. "EU   (" .. tostring(lsc_fill_pct) .. "%)")
+            gpu.set(widget.min_x + 2, widget.min_y + 3, "Passive loss: " .. format_number(lsc_status.passive_loss_eut) .. "EU/t")
+            gpu.set(widget.min_x + 2, widget.min_y + 4, "I/O [EU/t]: +" .. format_number(lsc_status.avg_input_eut) .. " -" .. format_number(lsc_status.avg_output_eut) .. " -" .. format_number(lsc_status.passive_loss_eut) .. " = " .. format_number(average_net_input_eut) .. "EU/t" .. empty_or_full_message)
             gpu.set(widget.min_x + 2, widget.min_y + 5, "LSC maintenance status: ")
             if lsc_status.needs_maintenance then
                 gpu.setForeground(0xFF0000)
