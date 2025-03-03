@@ -875,11 +875,46 @@ local function create_widgets(lsc, reactors)
                 empty_or_full_message = "; Empty in " .. format_seconds(empty_in_seconds)
             end
 
+            local function is_digit(c)
+                return c >= '0' and c <= '9'
+            end
+            
+            local function format_integer_part(digits)
+                local length = #digits
+                local parts = {}
+               
+                for i = length, 1, -3 do
+                    local start = math.max(1, i - 2)
+                    table.insert(parts, 1, digits:sub(start, i))
+                end
+                
+                return table.concat(parts, ",")
+            end
+            
+            local function split_parts(s)
+                local prefix = ""
+                local digits = ""
+                local i = 1
+                
+                while i <= #s and not is_digit(s:sub(i, i)) do
+                    prefix = prefix .. s:sub(i, i)
+                    i = i + 1
+                end
+                
+                while i <= #s and is_digit(s:sub(i, i)) do
+                    digits = digits .. s:sub(i, i)
+                    i = i + 1
+                end
+                
+                local suffix = s:sub(i)
+                
+                return prefix, digits, suffix
+            end
+            
             local function format_number(n)
-                local formatted = tostring(n)
-                local left, num, right = formatted:match('^([^%d]*%d)(%d*)(%.?.*)$')
-                num = num:reverse():gsub("(%d%d%d)", "%1,"):reverse()
-                return left .. num .. right
+                local s = tostring(n)
+                local prefix, digits, suffix = split_parts(s)
+                return prefix .. format_integer_part(digits) .. suffix
             end
             
             draw_window("LSC", widget.min_x, widget.min_y, widget.max_x, widget.max_y)
