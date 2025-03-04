@@ -57,13 +57,13 @@ NOTE: the Redstone I/O has one side disabled (with a wrench) such that only one 
 
 The only time you should touch the reactor chamber is to place the components that the script won't touch (reactor platings, heat vents). The fuel rods should be provided by the ME Interface, and coolant cells by one of the minecraft chests. The program automatically fills the reactor before turning it on based on the configuration specified in the code.
 
-Example double reactor setup with vacuum freezers:
+Example double reactor setup with vacuum freezers (old GTNH version, required 10x the vacuum freezers):
 
 ![](img/2_reactor_setup.png)
 
-[gtnh-flow](https://github.com/OrderedSet86/gtnh-flow) diagram for a single reactor with the default chamber setup:
+[gtnh-flow](https://github.com/OrderedSet86/gtnh-flow) diagram for a single reactor with the default chamber setup (updated for 2.7.3):
 
-[![](img/default_flow.png)](diagrams/1x40600eut.yaml)
+[![](img/default_flow.png)](diagrams/8x40600eut_2.7.3.yaml)
 
 ### UI
 
