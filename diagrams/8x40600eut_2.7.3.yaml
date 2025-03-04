@@ -1,0 +1,120 @@
+# erp=BCEj5P3DyjOJIWP/m9OQN1GXSMrIH6aXuU6m1XksoaLtro68rJkpMeaigDB71vzXY/WCrVrkAEd+xzKsA5Vm2mfVEv8qj8+Px9Nah63IfEtoOglJD20KUjLu/eQ1TwBsg1PF+0nzb0ZyC5+cd+y/s8s9zAqWjwTwTuSR05z+QkYufhYpGDHU3ZPv+RSQSsR+DgM=
+- m: nuclear reactor
+  tier: LV
+  I:
+    quad uranium fuel rod: 37
+    360k nak coolant cell: 648
+  O:
+    depleted quad uranium fuel rod: 37
+    '[recycle] depleted 360k nak coolant cell': 648
+  eut: 1
+  dur: 20000
+  number: 8
+- m: vacuum freezer
+  tier: HV
+  I:
+    depleted 360k nak coolant cell: 1
+  O:
+    360k nak coolant cell: 1
+  eut: 120
+  dur: 18
+- m: compressor
+  tier: MV
+  I:
+    uranium 238 dust: 1
+  O:
+    uranium 238: 1
+  eut: 2
+  dur: 15
+- m: compressor
+  tier: MV
+  I:
+    tiny pile of uranium 235 dust: 1
+  O:
+    tiny pile of uranium 235: 1
+  eut: 2
+  dur: 15
+- m: assembler [5]
+  tier: LV
+  I:
+    steel rod: 4
+    dual uranium fuel rod: 2
+  O:
+    quad uranium fuel rod: 1
+  eut: 30
+  dur: 10
+- m: assembler [2]
+  tier: LV
+  I:
+    steel rod: 4
+    uranium fuel rod: 2
+  O:
+    dual uranium fuel rod: 1
+  eut: 30
+  dur: 10
+- m: canning machine
+  tier: LV
+  I:
+    empty fuel rod: 1
+    enriched uranium nuclear fuel: 1
+  O:
+    uranium fuel rod: 1
+  eut: 16
+  dur: 1.5
+- m: assembler
+  tier: MV
+  I:
+    uranium 238: 6
+    tiny pile of uranium 235: 3
+    ic2 coolant: 1000
+  O:
+    enriched uranium nuclear fuel: 1
+  eut: 120
+  dur: 20
+- m: thermal centrifuge
+  tier: LV
+  I:
+    depleted quad uranium fuel rod: 1
+  O:
+    tiny pile of plutonium: 4
+    '[recycle] uranium 238': 16
+    iron dust: 6
+  eut: 24
+  amps: 2
+  dur: 25
+- m: extruder
+  tier: LV
+  I:
+    iron ingot: 1
+  O:
+    empty fuel rod: 1
+  eut: 30
+  dur: 6.4
+- m: mixer [4]
+  tier: MV
+  I:
+    distilled water: 1000
+    lapis lazuli dust: 1
+  O:
+    ic2 coolant: 1000
+  eut: 48
+  dur: 12.8
+- m: electric blast furnace
+  tier: HV
+  coils: nichrome
+  I:
+    iron dust: 1
+    oxygen gas: 1000
+  O:
+    steel ingot: 1
+  eut: 120
+  heat: 1000
+  dur: 25
+- m: extruder
+  tier: MV
+  I:
+    steel ingot: 1
+  O:
+    steel rod: 2
+  eut: 90
+  dur: 9.6
