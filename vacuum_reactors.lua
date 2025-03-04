@@ -875,11 +875,53 @@ local function create_widgets(lsc, reactors)
                 empty_or_full_message = "; Empty in " .. format_seconds(empty_in_seconds)
             end
 
+            local function is_digit(c)
+                return c >= '0' and c <= '9'
+            end
+            
+            local function format_integer_part(digits)
+                local length = #digits
+                local parts = {}
+               
+                for i = length, 1, -3 do
+                    local start = math.max(1, i - 2)
+                    table.insert(parts, 1, digits:sub(start, i))
+                end
+                
+                return table.concat(parts, ",")
+            end
+            
+            local function split_parts(s)
+                local prefix = ""
+                local digits = ""
+                local i = 1
+                
+                while i <= #s and not is_digit(s:sub(i, i)) do
+                    prefix = prefix .. s:sub(i, i)
+                    i = i + 1
+                end
+                
+                while i <= #s and is_digit(s:sub(i, i)) do
+                    digits = digits .. s:sub(i, i)
+                    i = i + 1
+                end
+                
+                local suffix = s:sub(i)
+                
+                return prefix, digits, suffix
+            end
+            
+            local function format_number(n)
+                local s = tostring(n)
+                local prefix, digits, suffix = split_parts(s)
+                return prefix .. format_integer_part(digits) .. suffix
+            end
+            
             draw_window("LSC", widget.min_x, widget.min_y, widget.max_x, widget.max_y)
-            gpu.set(widget.min_x + 2, widget.min_y + 1, "Tick: " .. tostring(tick) .. "; Uptime: " .. string.format("%.02f", uptime) .. "s")
-            gpu.set(widget.min_x + 2, widget.min_y + 2, "LSC: " .. tostring(lsc_status.used_capacity_eu) .. "EU / " .. tostring(lsc_status.total_capacity_eu) .. "EU   (" .. tostring(lsc_fill_pct) .. "%)")
-            gpu.set(widget.min_x + 2, widget.min_y + 3, "Passive loss: " .. tostring(lsc_status.passive_loss_eut) .. "EU/t")
-            gpu.set(widget.min_x + 2, widget.min_y + 4, "I/O [EU/t]: +" .. tostring(lsc_status.avg_input_eut) .. " -" .. tostring(lsc_status.avg_output_eut) .. " -" .. tostring(lsc_status.passive_loss_eut) .. " = " .. tostring(average_net_input_eut) .. "EU/t" .. empty_or_full_message)
+            gpu.set(widget.min_x + 2, widget.min_y + 1, "Tick: " .. format_number(tick) .. "; Uptime: " .. string.format("%.02f", uptime) .. "s")
+            gpu.set(widget.min_x + 2, widget.min_y + 2, "LSC: " .. format_number(lsc_status.used_capacity_eu) .. "EU / " .. format_number(lsc_status.total_capacity_eu) .. "EU   (" .. tostring(lsc_fill_pct) .. "%)")
+            gpu.set(widget.min_x + 2, widget.min_y + 3, "Passive loss: " .. format_number(lsc_status.passive_loss_eut) .. "EU/t")
+            gpu.set(widget.min_x + 2, widget.min_y + 4, "I/O [EU/t]: +" .. format_number(lsc_status.avg_input_eut) .. " -" .. format_number(lsc_status.avg_output_eut) .. " -" .. format_number(lsc_status.passive_loss_eut) .. " = " .. format_number(average_net_input_eut) .. "EU/t" .. empty_or_full_message)
             gpu.set(widget.min_x + 2, widget.min_y + 5, "LSC maintenance status: ")
             if lsc_status.needs_maintenance then
                 gpu.setForeground(0xFF0000)
