@@ -57,11 +57,15 @@ NOTE: the Redstone I/O has one side disabled (with a wrench) such that only one 
 
 The only time you should touch the reactor chamber is to place the components that the script won't touch (reactor platings, heat vents). The fuel rods should be provided by the ME Interface, and coolant cells by one of the minecraft chests. The program automatically fills the reactor before turning it on based on the configuration specified in the code.
 
-Example double reactor setup with vacuum freezers (old GTNH version, required 10x the vacuum freezers):
+Example 8 reactor setup with all the processing required (2.7.3):
 
-![](img/2_reactor_setup.png)
+![](img/8_reactors.png)
 
-[gtnh-flow](https://github.com/OrderedSet86/gtnh-flow) diagram for a single reactor with the default chamber setup (updated for 2.7.3):
+Example setup from ZombieZilla with 16 reactors (2.7.x, tier 3 screen and GPU):
+
+![](img/16_reactors.png)
+
+[gtnh-flow](https://github.com/OrderedSet86/gtnh-flow) diagram for a 8 reactors with the default chamber setup (updated for 2.7.3):
 
 [![](img/default_flow.png)](diagrams/8x40600eut_2.7.3.yaml)
 
@@ -71,7 +75,7 @@ Clicking on a line corresponding to a reactor will toggle it (if disabled like t
 
 Ctrl+C shuts down the program gracefully.
 
-UI with an LSC and 2 reactors:
+UI with an LSC and 8 reactors:
 
 ![](img/ui_with_lsc.png)
 
@@ -87,8 +91,8 @@ Recommended hardware specification:
 - Tier 3 CPU
 - 2x Tier 2 RAM
 - Tier 1 HDD
-- Tier 2 GPU
-- Tier 2 screen (currently the resolution is forced to 80x25)
+- \>=Tier 2 GPU (Tier 3 required if you have more than 8 reactors)
+- \>=Tier 2 screen (Tier 3 required if you have more than 8 reactors)
 
 Optional hardware:
 - Component busses for expansion
