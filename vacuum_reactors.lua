@@ -756,6 +756,11 @@ end
 
 local function update_reactor_heat_readings(reactor)
     reactor.current_heat = reactor.reactor_chamber.getHeat()
+    -- Read together with the heat rather than once during initialization. A reactor updates
+    -- its capacity only on its own tick, so the value read right after the reactor plating
+    -- is taken back out still includes the plating, and every heat percentage computed from
+    -- it stays too low for as long as the program runs.
+    reactor.max_heat = reactor.reactor_chamber.getMaxHeat()
 end
 
 local function update_reactor_output_readings(reactor)
