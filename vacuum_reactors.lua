@@ -366,8 +366,32 @@ local function try_replace_one_fuel_rod(reactor, reactor_items)
     return nil
 end
 
+-- A sensor line is an unlocalized key followed by its arguments, separated by backslashes.
+-- The average input, for example, arrives as the key, then "190,054", then the averaging
+-- period "5". Only the first argument holds the value, so the line cannot be stripped down
+-- to its digits: that reads the example as 1,900,545, ten times the real one.
+local SENSOR_ARGUMENT_SEPARATOR = string.char(92)
+
+local function sensor_line_value(str)
+    local value_start = string.find(str, SENSOR_ARGUMENT_SEPARATOR, 1, true)
+    if value_start == nil then
+        return str
+    end
+
+    while string.sub(str, value_start, value_start) == SENSOR_ARGUMENT_SEPARATOR do
+        value_start = value_start + 1
+    end
+
+    local value_end = string.find(str, SENSOR_ARGUMENT_SEPARATOR, value_start, true)
+    if value_end == nil then
+        return string.sub(str, value_start)
+    end
+
+    return string.sub(str, value_start, value_end - 1)
+end
+
 local function parse_fuzzy_int(str)
-    local filtered_str = string.gsub(str, "([^0-9]+)", "")
+    local filtered_str = string.gsub(sensor_line_value(str), "([^0-9]+)", "")
     return math.floor(tonumber(filtered_str))
 end
 
